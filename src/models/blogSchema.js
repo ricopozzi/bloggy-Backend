@@ -1,4 +1,5 @@
 const mongoose = require('mongoose');
+const mongoosePaginate = require('mongoose-paginate')
 
 const blogSchema = new mongoose.Schema({
     title:{
@@ -11,12 +12,12 @@ const blogSchema = new mongoose.Schema({
     },
     author: {
         type: String,
-        required: true,
+        required: false,
     },
     dateposted:{
         type: Date,
         default: Date.now,
     }
 });
-
-const blog = mongoose.model('Blog', blogSchema);
+blogSchema.plugin(mongoosePaginate)
+mongoose.model('Blog', blogSchema);

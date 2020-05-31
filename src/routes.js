@@ -3,7 +3,9 @@ const routes = express.Router()
 const blogController = require('./controllers/blogController')
 
 
+
 routes.get("/products", blogController.find)
+routes.get(`/posts/:id`, blogController.findById)
 routes.post("/products", blogController.create)
 routes.put('/products/:id', blogController.update)
 routes.delete('/products/:id', blogController.destroy)
